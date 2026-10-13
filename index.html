@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>manoelhportfolio.com.br</title>
+<meta name="description" content="Vídeos & Filmes — portfólio de Manoel Henrique, videomaker e editor de vídeo.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="manoelhportfolio.com.br">
+<meta property="og:title" content="manoelhportfolio.com.br">
+<meta property="og:description" content="Vídeos & Filmes — portfólio de Manoel Henrique, videomaker e editor de vídeo.">
+<meta property="og:url" content="https://manoelhportfolio.com.br/">
+<meta property="og:image" content="https://manoelhportfolio.com.br/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vídeos & Filmes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://manoelhportfolio.com.br/og.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@300;400&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F0F0E;--paper:#F3F3F1;--muted:#4A4A46;--accent:#FF6A2B;--band:#5C6459}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:76px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Archivo','Helvetica Neue',Helvetica,sans-serif;font-size:16px;line-height:1.45}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:clamp(20px,4vw,56px);padding-right:clamp(20px,4vw,56px)}
+.mono{font-family:'DM Mono',ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.06em}
+header.top{position:sticky;top:0;z-index:10;background:var(--ink);color:var(--paper)}
+header.top .wrap{padding-top:14px;padding-bottom:14px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 40px}
+.logo{text-decoration:none;font-size:26px;font-weight:600;letter-spacing:-.02em}
+nav.main{display:flex;flex-wrap:wrap;gap:4px 32px;font-size:13px}
+.navlink{text-decoration:none;padding:12px 0;border-bottom:1px solid transparent}
+.navlink:hover{border-bottom-color:currentColor}
+.hero{position:relative;overflow:hidden;background:#141412;color:var(--paper);min-height:780px;display:flex;flex-direction:column}
+.hero .veil{position:absolute;inset:0;background:rgba(12,12,11,.52)}
+.hero .vig{position:absolute;inset:0;box-shadow:inset 0 0 260px rgba(0,0,0,.85)}
+.hero svg{position:absolute;inset:0;opacity:.14;mix-blend-mode:screen}
+.hero .veil,.hero .vig,.hero svg{pointer-events:none}
+.hero .inner{position:relative;flex:1;width:100%;padding-top:56px;padding-bottom:48px;display:flex;flex-direction:column;justify-content:space-between;gap:64px}
+.clock{display:flex;flex-direction:column;gap:10px;font-size:13px;font-weight:300;color:#E6E6E1}
+h1{margin:0;font-size:clamp(64px,12.5vw,200px);line-height:.86;font-stretch:75%;font-weight:500;letter-spacing:-.03em;text-transform:uppercase}
+h1 em{font-weight:300}
+.herorow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px;margin-top:36px}
+.herorow p{margin:0;max-width:460px;font-size:19px}
+.btn{text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 24px;border:1px solid currentColor;font-size:13px}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.light:hover{background:var(--paper);color:var(--ink)}
+.tickerbox{overflow:hidden;border-bottom:1px solid var(--ink);padding:14px 0}
+.ticker{display:flex;width:max-content;animation:ticker 38s linear infinite;font-size:22px;font-weight:500;text-transform:uppercase}
+.ticker span{padding-right:48px;white-space:nowrap}
+@keyframes ticker{to{transform:translateX(-50%)}}
+.media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,opacity .35s ease}
+.frame{position:relative;overflow:hidden;color:var(--paper);display:flex;flex-direction:column;justify-content:space-between}
+.frame .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,7,.82) 0%,rgba(8,8,7,.15) 55%,rgba(8,8,7,.45) 100%);pointer-events:none}
+.frame>*:not(.media):not(.scrim):not(.watch){position:relative}
+.preview{opacity:0}
+.preview.on{opacity:1}
+.card{display:block;text-decoration:none;color:var(--ink)}
+.card:hover .media{transform:scale(1.04)}
+.watch{position:absolute;right:16px;bottom:16px;font-size:12px;background:var(--accent);color:var(--ink);padding:8px 12px;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+.card:hover .watch,.card:focus-visible .watch{opacity:1;transform:none}
+.f169{aspect-ratio:16/9;padding:16px}
+.meta{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:#E6E6E1}
+.brand{font-size:clamp(30px,3vw,44px);line-height:.9;font-stretch:70%;font-weight:700;text-transform:uppercase}
+.ctitle{display:block;padding-top:12px;font-size:16px;font-weight:500}
+.feat{padding-top:96px;padding-bottom:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:56px;align-items:center}
+.feat .left{display:flex;flex-direction:column;align-items:center;text-align:center;gap:48px}
+.feat h2{margin:0;font-size:clamp(44px,5vw,76px);line-height:1.02;font-weight:400;letter-spacing:-.025em;color:#6E6E69}
+.side{width:min(100%,340px);text-align:left}
+.side .frame{aspect-ratio:1/1;padding:18px;background:#33301F}
+.side .brand{font-size:40px}
+.side .ctitle{font-family:'DM Mono',monospace;text-transform:uppercase;font-size:12px;color:var(--muted);font-weight:400}
+.big{color:var(--paper)}
+.big .frame{min-height:720px;padding:28px;background:#33301F}
+.big .brand{font-size:clamp(56px,7vw,112px);line-height:.86}
+.big .sub{font-size:19px;margin-top:14px}
+.works{border-top:1px solid var(--ink)}
+.workshead{padding-top:72px;padding-bottom:32px;display:flex;flex-direction:column;gap:32px}
+.workshead .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px}
+.workshead h2{margin:0;font-size:clamp(48px,7vw,104px);line-height:.9;font-stretch:75%;font-weight:500;letter-spacing:-.03em;text-transform:uppercase}
+.chips{display:flex;flex-wrap:wrap;gap:8px;font-size:12px}
+.chip{font:inherit;cursor:pointer;min-height:44px;padding:0 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);border-radius:0}
+.chip:hover{background:#E2E2DE}
+.chip.on{background:var(--ink);color:var(--paper)}
+.theme{padding-top:40px;padding-bottom:72px}
+.theme[hidden]{display:none}
+.thead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 48px;border-top:1px solid var(--ink);padding-top:16px;margin-bottom:32px}
+.thead h3{margin:0;font-size:14px;font-weight:400}
+.thead p{margin:0;color:var(--muted)}
+.thead p .mono{font-size:12px;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:40px 24px}
+.about{background:var(--band);color:var(--paper)}
+.about .wrap{padding-top:112px;padding-bottom:112px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px}
+.about h2{margin:0;font-size:clamp(44px,5vw,72px);line-height:.95;font-weight:500;letter-spacing:-.025em}
+.role{display:flex;align-items:center;gap:12px;font-size:13px;margin-top:14px}
+.role i{width:10px;height:10px;background:var(--accent)}
+.bio{display:flex;flex-direction:column;gap:20px;max-width:560px;font-size:20px;line-height:1.55}
+.bio p{margin:0}
+.contact{padding-top:96px;padding-bottom:112px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px}
+.contact h2{margin:0;font-size:clamp(44px,5vw,72px);line-height:.95;font-weight:400;letter-spacing:-.025em}
+.links{display:flex;flex-direction:column;gap:4px;font-size:13px}
+.links a{display:inline-flex;align-items:center;min-height:44px}
+.form{display:flex;flex-direction:column;gap:28px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:28px 24px}
+label{display:flex;flex-direction:column;gap:4px;font-size:14px}
+.field{display:block;width:100%;font:inherit;font-size:17px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:10px 0;border-radius:0}
+.field:focus{outline:none;border-bottom-width:2px}
+textarea.field{resize:vertical}
+.note{margin:0;font-size:11px;color:var(--muted)}
+footer{background:var(--ink);color:var(--paper)}
+footer .wrap{padding-top:36px;padding-bottom:36px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 40px;font-size:12px;font-weight:300}
+footer a{text-decoration:none}
+@media (prefers-reduced-motion: reduce){.ticker{animation:none}.media,.watch{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+<div class="wrap">
+<a class="logo" href="#topo">Manoel Henrique</a>
+<nav class="main mono" aria-label="Principal">
+<a class="navlink" href="#trabalhos">Trabalhos</a>
+<a class="navlink" href="#sobre">Sobre</a>
+<a class="navlink" href="#contato">Contato</a>
+</nav>
+</div>
+</header>
+
+<section id="topo" class="hero" aria-label="Abertura">
+<video class="media" id="heroVideo" src="media/hero-montage.mp4" poster="media/hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+<div class="veil"></div>
+<svg aria-hidden="true" width="100%" height="100%"><filter id="grao"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grao)"/></svg>
+<div class="vig"></div>
+<div class="inner wrap">
+<div class="clock mono"><span><span id="clock">--:--:--</span> Brasil</span><span id="date">&nbsp;</span></div>
+<div>
+<h1>Vídeos<br><em>&amp;</em> Filmes</h1>
+<div class="herorow">
+<p>Curtas, casamentos, eventos, gastronomia, games e peças comerciais.</p>
+<a class="btn light mono" href="#trabalhos">Ver trabalhos <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="tickerbox" aria-hidden="true"><div class="ticker" id="ticker"></div></div>
+
+<section class="feat wrap" aria-labelledby="destaque-t">
+<div class="left">
+<h2 id="destaque-t">Em<br><em>destaque</em><br>agora</h2>
+<a class="card side" data-preview href="https://drive.google.com/file/d/1M9mIk7DoRTz8S3ojBCkzgw6plIeZaEyO/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Capital Moto Week: Pódio Vibra 2026 (abre em nova aba)">
+<div class="frame"><img class="media" src="media/cmw-vibra.jpg" alt=""><video class="media preview" src="media/cmw-vibra.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<span class="mono meta">4K · 3840×2160</span>
+<span class="brand">Capital Moto Week</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Pódio Vibra 2026</span>
+</a>
+</div>
+<a class="card big" href="https://drive.google.com/file/d/1-S2F9HFtrW0KOmiQSkF1TQQ6SLJb0R8o/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Ensaios da Anitta: R2 · Highlight 2026 (abre em nova aba)">
+<div class="frame"><video class="media" src="media/anitta-highlight.mp4" poster="media/anitta-highlight.jpg" autoplay muted loop playsinline aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>[ Destaque ]</span></div>
+<div><span class="brand" style="display:block">Ensaios da Anitta</span><span class="sub" style="display:block">R2 · Highlight 2026</span></div>
+<span class="watch mono" style="right:28px;bottom:28px">▶ Assistir</span>
+</div>
+</a>
+</section>
+
+<section id="trabalhos" class="works" aria-labelledby="trabalhos-t">
+<div class="workshead wrap">
+<div class="row">
+<h2 id="trabalhos-t">Trabalhos</h2>
+<span class="mono" style="font-size:13px">[ 30 vídeos · 6 temas ]</span>
+</div>
+<div class="chips mono" role="group" aria-label="Filtrar por tema"><button type="button" class="chip on" data-filter="todos" aria-pressed="true">Todos</button><button type="button" class="chip" data-filter="curtas" aria-pressed="false">Curtas</button><button type="button" class="chip" data-filter="institucional" aria-pressed="false">Institucional</button><button type="button" class="chip" data-filter="casamentos" aria-pressed="false">Casamentos</button><button type="button" class="chip" data-filter="eventos" aria-pressed="false">Eventos</button><button type="button" class="chip" data-filter="gastronomia" aria-pressed="false">Gastronomia</button><button type="button" class="chip" data-filter="games" aria-pressed="false">Games</button></div>
+</div>
+<section class="theme wrap" id="curtas" data-theme="curtas" aria-labelledby="curtas-t">
+<div class="thead"><h3 id="curtas-t" class="mono">[ 01 — Curtas e projetos autorais ]</h3><p>Narrativa, direção e experimentação. <span class="mono">· 6 vídeos</span></p></div>
+<div class="grid"><a class="card" data-preview href="https://drive.google.com/file/d/1CfXRyJOyA1sTOIBqYoyJJZEYXYVs-l-8/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Blackout: Curta-metragem (abre em nova aba)">
+<div class="frame f169" style="background:#1D2233"><img class="media" src="media/blackout.jpg" alt="" loading="lazy"><video class="media preview" src="media/blackout.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Curtas</span><span>01 / 06</span></div>
+<span class="brand">Blackout</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Curta-metragem</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/12gGZOa1OgFZ7GLKQHplw4UI2oz3hCRO0/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Paranoia: Filme (abre em nova aba)">
+<div class="frame f169" style="background:#1D2233"><img class="media" src="media/paranoia.jpg" alt="" loading="lazy"><video class="media preview" src="media/paranoia.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Curtas</span><span>02 / 06</span></div>
+<span class="brand">Paranoia</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Filme</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1yrx_zkOQb13pk5KTxb1a0c9CUUa-wN8X/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Jovem Dionísio: Filme (abre em nova aba)">
+<div class="frame f169" style="background:#1D2233"><img class="media" src="media/jovem-dionisio.jpg" alt="" loading="lazy"><video class="media preview" src="media/jovem-dionisio.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Curtas</span><span>03 / 06</span></div>
+<span class="brand">Jovem Dionísio</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Filme</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1yicD-4Wgj9Ek2i-ByCz49B18Xte-_o9_/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Corpus: Entre Mundos (abre em nova aba)">
+<div class="frame f169" style="background:#1D2233"><img class="media" src="media/corpus-entre-mundos.jpg" alt="" loading="lazy"><video class="media preview" src="media/corpus-entre-mundos.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Curtas</span><span>04 / 06</span></div>
+<span class="brand">Corpus</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Entre Mundos</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1hpqG3jNXwK3FPf8WLneI0VqyRnYRP3yW/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Corpus: Reels (abre em nova aba)">
+<div class="frame f169" style="background:#1D2233"><img class="media" src="media/corpus-reels.jpg" alt="" loading="lazy"><video class="media preview" src="media/corpus-reels.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Curtas</span><span>05 / 06</span></div>
+<span class="brand">Corpus</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Reels</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1S5_l5zO2gD75ga-SStDSaseaTgetQTFF/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Shawn James: Filme (abre em nova aba)">
+<div class="frame f169" style="background:#1D2233"><img class="media" src="media/shawn-james.jpg" alt="" loading="lazy"><video class="media preview" src="media/shawn-james.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Curtas</span><span>06 / 06</span></div>
+<span class="brand">Shawn James</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Filme</span>
+</a></div>
+</section>
+<section class="theme wrap" id="institucional" data-theme="institucional" aria-labelledby="institucional-t">
+<div class="thead"><h3 id="institucional-t" class="mono">[ 02 — Institucional e publicidade ]</h3><p>Peças comerciais para marcas e negócios. <span class="mono">· 7 vídeos</span></p></div>
+<div class="grid"><a class="card" data-preview href="https://drive.google.com/file/d/1eaF9WxPdio4lZOjBG4pKBqg0mkGQr6ww/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Concentro: Sábado Júnior (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><img class="media" src="media/concentro.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>01 / 07</span></div>
+<span class="brand">Concentro</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Sábado Júnior</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1nDw1DaZ2JFggBLuENkYo_hou06ZS0HAd/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Outline: Ação R2 (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><img class="media" src="media/outline.jpg" alt="" loading="lazy"><video class="media preview" src="media/outline.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Institucional</span><span>02 / 07</span></div>
+<span class="brand">Outline</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Ação R2</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/13I9ZBsPavnJNxt0Md4MG07nPq8dg-Sjb/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir ARQ: Principal (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><img class="media" src="media/arq.jpg" alt="" loading="lazy"><video class="media preview" src="media/arq.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Institucional</span><span>03 / 07</span></div>
+<span class="brand">ARQ</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Principal</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1_6MZpr6Yz-kbJIGLRHnh-qhvKm23ql7X/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Nego: Markus (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><img class="media" src="media/nego.jpg" alt="" loading="lazy"><video class="media preview" src="media/nego.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Institucional</span><span>04 / 07</span></div>
+<span class="brand">Nego</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Markus</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/147lvTDgnSwYoWIJCHvV36JcACh0XtIbt/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir ABIPAG: Vídeo (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><img class="media" src="media/abipag.jpg" alt="" loading="lazy"><video class="media preview" src="media/abipag.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>Institucional</span><span>05 / 07</span></div>
+<span class="brand">ABIPAG</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1lZ5KjdZPDUXBcqTwpOpkH6aq0vW6Lait/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Publitalk: Vídeo (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><img class="media" src="media/publitalk.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Institucional</span><span>06 / 07</span></div>
+<span class="brand">Publitalk</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1lvTMCiQYgiFxzWZJONgH5fboyWjcmF6S/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Vinil Collection: Vídeo (abre em nova aba)">
+<div class="frame f169" style="background:#1E3132"><span class="scrim"></span>
+<div class="mono meta"><span>Institucional</span><span>07 / 07</span></div>
+<span class="brand">Vinil Collection</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo</span>
+</a></div>
+</section>
+<section class="theme wrap" id="casamentos" data-theme="casamentos" aria-labelledby="casamentos-t">
+<div class="thead"><h3 id="casamentos-t" class="mono">[ 03 — Casamentos ]</h3><p>Filmes de cerimônia e celebração. <span class="mono">· 2 vídeos</span></p></div>
+<div class="grid"><a class="card" data-preview href="https://drive.google.com/file/d/1SQy9WXlxc4Pj_2M3cEHVi95Uu951Bd7M/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Amanda &amp; Weslley: Lupe Weddings (abre em nova aba)">
+<div class="frame f169" style="background:#3A2229"><img class="media" src="media/amanda-weslley.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Full HD · 1080p</span><span>01 / 02</span></div>
+<span class="brand">Amanda &amp; Weslley</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Lupe Weddings</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1VReKVHcSAFhVZyfknBLkwsagMWdAUJ8a/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Victoria &amp; Gabriel: Filme (abre em nova aba)">
+<div class="frame f169" style="background:#3A2229"><span class="scrim"></span>
+<div class="mono meta"><span>Casamentos</span><span>02 / 02</span></div>
+<span class="brand">Victoria &amp; Gabriel</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Filme</span>
+</a></div>
+</section>
+<section class="theme wrap" id="eventos" data-theme="eventos" aria-labelledby="eventos-t">
+<div class="thead"><h3 id="eventos-t" class="mono">[ 04 — Eventos e inaugurações ]</h3><p>Shows, festivais, aniversários e inaugurações. <span class="mono">· 7 vídeos</span></p></div>
+<div class="grid"><a class="card" data-preview href="https://drive.google.com/file/d/1-S2F9HFtrW0KOmiQSkF1TQQ6SLJb0R8o/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Ensaios da Anitta: R2 · Highlight 2026 (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/anitta-highlight.jpg" alt="" loading="lazy"><video class="media preview" src="media/anitta-highlight.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>01 / 07</span></div>
+<span class="brand">Ensaios da Anitta</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">R2 · Highlight 2026</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1qusdpRzK7a_P9sKGuOusWkLgfdx8hlTx/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Ensaios da Anitta: R2 · Aftermovie 2026 (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/anitta-aftermovie.jpg" alt="" loading="lazy"><video class="media preview" src="media/anitta-aftermovie.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>02 / 07</span></div>
+<span class="brand">Ensaios da Anitta</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">R2 · Aftermovie 2026</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1M9mIk7DoRTz8S3ojBCkzgw6plIeZaEyO/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Capital Moto Week: Pódio Vibra 2026 (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/cmw-vibra.jpg" alt="" loading="lazy"><video class="media preview" src="media/cmw-vibra.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>03 / 07</span></div>
+<span class="brand">Capital Moto Week</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Pódio Vibra 2026</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1Y0H-qoieyZrZJz6c0Ep3QNGN6F7FyduD/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Capital Moto Week: Sebrae 2026 (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/cmw-sebrae.jpg" alt="" loading="lazy"><video class="media preview" src="media/cmw-sebrae.mp4" muted loop playsinline preload="none" aria-hidden="true"></video><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>04 / 07</span></div>
+<span class="brand">Capital Moto Week</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Sebrae 2026</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1syZdITRkkQuZlFVRwZjuyJ-f7dNVRCjX/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Ultra Academia: Inauguração, ambientação (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/ultra-ambientacao.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>05 / 07</span></div>
+<span class="brand">Ultra Academia</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Inauguração, ambientação</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1cdY_yh8DG-Nsqme7dP-f8t-ARK9vJLHx/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Ultra Academia: Inauguração, malhação (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/ultra-malhacao.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>4K · 3840×2160</span><span>06 / 07</span></div>
+<span class="brand">Ultra Academia</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Inauguração, malhação</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1cnXq9SrycK_5YXRw9680Sdl7wIIE0ilW/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Velocity: Aniversário de 1 ano (abre em nova aba)">
+<div class="frame f169" style="background:#33301F"><img class="media" src="media/velocity.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Eventos</span><span>07 / 07</span></div>
+<span class="brand">Velocity</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Aniversário de 1 ano</span>
+</a></div>
+</section>
+<section class="theme wrap" id="gastronomia" data-theme="gastronomia" aria-labelledby="gastronomia-t">
+<div class="thead"><h3 id="gastronomia-t" class="mono">[ 05 — Gastronomia ]</h3><p>Vídeos para restaurantes e cafés. <span class="mono">· 4 vídeos</span></p></div>
+<div class="grid"><a class="card" data-preview href="https://drive.google.com/file/d/1yoNm98c2KQB_MURlyynkeqvcHZLtO4SV/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Rito: Agosto, saída 2: Pokes (abre em nova aba)">
+<div class="frame f169" style="background:#3B2619"><img class="media" src="media/rito-pokes.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Quadrado · 2160×2160</span><span>01 / 04</span></div>
+<span class="brand">Rito</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Agosto, saída 2: Pokes</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1Pfa63dk_zlDW6RNoU_zE7WW9MeNnUGh5/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Rito: Agosto, saída 2: Sanduíche Foccacia (abre em nova aba)">
+<div class="frame f169" style="background:#3B2619"><img class="media" src="media/rito-focaccia.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Quadrado · 2160×2160</span><span>02 / 04</span></div>
+<span class="brand">Rito</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Agosto, saída 2: Sanduíche Foccacia</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1HIPPR1FvyO4wtJ6RDD7a_orqu-p2nsPD/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Rito: Agosto, saída 2: Tost de Salmão (abre em nova aba)">
+<div class="frame f169" style="background:#3B2619"><img class="media" src="media/rito-salmao.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Quadrado · 2160×2160</span><span>03 / 04</span></div>
+<span class="brand">Rito</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Agosto, saída 2: Tost de Salmão</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1RHzlST2HbBP1yvsNrfe9Jwjt0hLRXGUk/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Ouro Preto Café: Vídeo (abre em nova aba)">
+<div class="frame f169" style="background:#3B2619"><img class="media" src="media/ouro-preto.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Gastronomia</span><span>04 / 04</span></div>
+<span class="brand">Ouro Preto Café</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo</span>
+</a></div>
+</section>
+<section class="theme wrap" id="games" data-theme="games" aria-labelledby="games-t">
+<div class="thead"><h3 id="games-t" class="mono">[ 06 — Games ]</h3><p>Vídeos para estúdios e marcas de jogos. <span class="mono">· 4 vídeos</span></p></div>
+<div class="grid"><a class="card" data-preview href="https://drive.google.com/file/d/1rZ6p24m3uS1aukiiUYUjhrLiE5BJMcLr/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir Bossa Studios: Showtime Collection (abre em nova aba)">
+<div class="frame f169" style="background:#26213F"><img class="media" src="media/bossa.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Games</span><span>01 / 04</span></div>
+<span class="brand">Bossa Studios</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Showtime Collection</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1uTzCoQWlGEPTt1F06Ybqfi1lemMgHn8N/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir BopGames: Vídeo 1 (abre em nova aba)">
+<div class="frame f169" style="background:#26213F"><img class="media" src="media/bop-1.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Games</span><span>02 / 04</span></div>
+<span class="brand">BopGames</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo 1</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1WjmbdHmRy3i-YOrqTadFBUY5cekQk29l/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir BopGames: Vídeo 2 (abre em nova aba)">
+<div class="frame f169" style="background:#26213F"><img class="media" src="media/bop-2.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Games</span><span>03 / 04</span></div>
+<span class="brand">BopGames</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo 2</span>
+</a>
+<a class="card" data-preview href="https://drive.google.com/file/d/1Z4hZxNSqzSL3tTgfw8ehjCM-KZvckFGr/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" aria-label="Assistir BopGames: Vídeo 3 (abre em nova aba)">
+<div class="frame f169" style="background:#26213F"><img class="media" src="media/bop-3.jpg" alt="" loading="lazy"><span class="scrim"></span>
+<div class="mono meta"><span>Games</span><span>04 / 04</span></div>
+<span class="brand">BopGames</span>
+<span class="watch mono">▶ Assistir</span>
+</div>
+<span class="ctitle">Vídeo 3</span>
+</a></div>
+</section>
+
+</section>
+
+<section id="sobre" class="about" aria-labelledby="sobre-t">
+<div class="wrap">
+<div>
+<h2 id="sobre-t">Manoel Henrique</h2>
+<span class="role mono"><i aria-hidden="true"></i>Videomaker e editor de vídeo</span>
+</div>
+<div class="bio">
+<p>Sou videomaker e editor de vídeo, apaixonado por audiovisual, iluminação e narrativa visual.</p>
+<p>Busco transformar ideias em experiências visuais autênticas, explorando a criatividade, a técnica e a linguagem cinematográfica para contar histórias e criar projetos que conectem pessoas e marcas.</p>
+<div style="padding-top:12px"><a class="btn light mono" href="#contato"><span aria-hidden="true">⤷</span> Fale comigo</a></div>
+</div>
+</div>
+</section>
+
+<section id="contato" class="contact wrap" aria-labelledby="contato-t">
+<div style="display:flex;flex-direction:column;gap:28px">
+<span class="mono" style="font-size:13px">[ Contato ]</span>
+<h2 id="contato-t">Vamos<br><em>filmar</em> algo?</h2>
+<div class="links mono">
+<a href="mailto:manoelmhm12@gmail.com">manoelmhm12@gmail.com</a>
+<a href="https://wa.me/5561996108252" target="_blank" rel="noopener noreferrer">WhatsApp (61) 99610-8252</a>
+<a href="https://www.instagram.com/manoelhenrique._" target="_blank" rel="noopener noreferrer">Instagram @manoelhenrique._</a>
+</div>
+</div>
+<form class="form" id="contactForm">
+<div class="two">
+<label>Nome<input class="field" type="text" name="nome" autocomplete="name"></label>
+<label>Assunto<input class="field" type="text" name="assunto"></label>
+</div>
+<label>Mensagem<textarea class="field" name="mensagem" rows="5"></textarea></label>
+<div><button class="btn mono" type="submit" style="background:transparent;color:inherit;font:inherit;font-size:13px;cursor:pointer">Enviar mensagem <span aria-hidden="true">→</span></button></div>
+<p class="note mono">Abre o seu app de e-mail com a mensagem pronta.</p>
+</form>
+</section>
+
+<footer>
+<div class="wrap mono">
+<span>© 2026 Manoel Henrique</span>
+<span><span id="clock2">--:--:--</span> Brasil</span>
+<a href="#topo">Voltar ao topo ↑</a>
+</div>
+</footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Relógio de Brasília
+  var tz = 'America/Sao_Paulo';
+  function tick() {
+    var d = new Date();
+    var t = d.toLocaleTimeString('pt-BR', { timeZone: tz, hour12: false });
+    var parts = new Intl.DateTimeFormat('pt-BR', { timeZone: tz, weekday: 'long', day: '2-digit', month: '2-digit', year: '2-digit' }).formatToParts(d);
+    var get = function (k) { var p = parts.find(function (x) { return x.type === k; }); return p ? p.value : ''; };
+    document.getElementById('clock').textContent = t;
+    document.getElementById('clock2').textContent = t;
+    document.getElementById('date').textContent = (get('weekday').split('-')[0] + ', ' + get('day') + '.' + get('month') + '.' + get('year')).toUpperCase();
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Faixa corrida
+  var words = ['Vídeos & Filmes', 'Portfólio 2026', 'Curtas', 'Casamentos', 'Publicidade', 'Eventos', 'Gastronomia', 'Games'];
+  var ticker = document.getElementById('ticker');
+  words.concat(words).forEach(function (w) { var s = document.createElement('span'); s.textContent = w + '  ✦'; ticker.appendChild(s); });
+
+  // Vídeos em loop (abertura e destaque)
+  var loops = document.querySelectorAll('video[autoplay]');
+  function kick() {
+    if (reduced || document.hidden) return;
+    loops.forEach(function (v) { v.muted = true; if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } });
+  }
+  loops.forEach(function (v) {
+    v.muted = true;
+    if (reduced) { v.removeAttribute('autoplay'); v.pause(); } else { v.addEventListener('canplay', kick); }
+  });
+  kick();
+  document.addEventListener('visibilitychange', kick);
+  ['scroll', 'pointerdown', 'touchstart'].forEach(function (ev) { window.addEventListener(ev, kick, { passive: true }); });
+
+  // Prévia: capa parada, trecho toca ao passar o mouse (ou o dedo)
+  var active = null;
+  function start(card) {
+    var v = card.querySelector('video.preview');
+    if (!v || reduced) return;
+    if (active && active !== v) stop(active.closest('[data-preview]'));
+    active = v;
+    v.muted = true;
+    v.onplaying = function () { v.classList.add('on'); };
+    try { v.currentTime = 0; } catch (e) {}
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
+  function stop(card) {
+    var v = card && card.querySelector('video.preview');
+    if (!v) return;
+    v.classList.remove('on'); v.pause();
+    if (active === v) active = null;
+  }
+  var cards = document.querySelectorAll('[data-preview]');
+  cards.forEach(function (c) {
+    c.addEventListener('mouseenter', function () { start(c); });
+    c.addEventListener('mouseleave', function () { stop(c); });
+    c.addEventListener('focus', function () { start(c); });
+    c.addEventListener('blur', function () { stop(c); });
+    c.addEventListener('touchstart', function () { start(c); }, { passive: true });
+  });
+  if ('IntersectionObserver' in window && matchMedia('(hover: none)').matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) start(en.target); else stop(en.target); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+
+  // Filtro por tema
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      chips.forEach(function (x) { var on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      document.querySelectorAll('.theme').forEach(function (s) { s.hidden = f !== 'todos' && s.getAttribute('data-theme') !== f; });
+    });
+  });
+
+  // Formulário: abre o e-mail com a mensagem pronta
+  document.getElementById('contactForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var f = ev.target;
+    var nome = f.nome.value.trim();
+    var assunto = f.assunto.value.trim() || ('Contato pelo portfólio' + (nome ? ' — ' + nome : ''));
+    var corpo = f.mensagem.value + (nome ? '\n\n' + nome : '');
+    location.href = 'mailto:manoelmhm12@gmail.com?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
+  });
+})();
+</script>
+</body>
+</html>
